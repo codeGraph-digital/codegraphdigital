@@ -15,6 +15,10 @@ interface Message {
   text: string;
 }
 
+interface BotConsoleProps {
+  className?: string;
+}
+
 const initialMessages: Message[] = [
   { id: 1, sender: "bot", text: "Hello! I'm the CodeGraph Assistant. How can I help you with your marketing strategy today?" },
 ];
@@ -26,7 +30,7 @@ const botResponses: { [key: string]: string } = {
   "default": "That's an interesting topic. Could you tell me a bit more? I can help with content ideas, campaign strategies, SEO analysis, and more."
 };
 
-export function BotConsole() {
+export function BotConsole({ className }: BotConsoleProps) {
   const [messages, setMessages] = React.useState<Message[]>(initialMessages);
   const [input, setInput] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
@@ -72,7 +76,7 @@ export function BotConsole() {
   };
 
   return (
-    <div className="flex h-[500px] flex-col rounded-lg border">
+    <div className={cn("flex h-[500px] flex-col rounded-lg border", className)}>
       <ScrollArea className="flex-grow p-4" ref={scrollAreaRef}>
         <AnimatePresence>
           <div className="space-y-4">

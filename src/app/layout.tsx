@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { FloatingAssistant } from "@/components/floating-assistant";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          <FloatingAssistant />
         </ThemeProvider>
       </body>
     </html>
