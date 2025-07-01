@@ -8,13 +8,14 @@ import { InsightHub } from "@/components/dashboard/insight-hub";
 import { BotConsole } from "@/components/dashboard/bot-console";
 import { motion } from "framer-motion";
 import { Bot, LineChart, PenSquare, Send, Search } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const toolTabs = [
-  { value: "content", title: "Content Studio", icon: PenSquare, component: <ContentStudio /> },
-  { value: "campaign", title: "Campaign Builder", icon: Send, component: <CampaignBuilder /> },
-  { value: "seo", title: "SEO Lab", icon: Search, component: <SeoLab /> },
-  { value: "insights", title: "Insight Hub", icon: LineChart, component: <InsightHub /> },
-  { value: "bot", title: "Bot Console", icon: Bot, component: <BotConsole /> },
+  { value: "content", title: "Content Studio", icon: PenSquare, component: <ContentStudio />, description: "Generate high-quality copy and articles." },
+  { value: "campaign", title: "Campaign Builder", icon: Send, component: <CampaignBuilder />, description: "Visually design automated marketing campaigns." },
+  { value: "seo", title: "SEO Lab", icon: Search, component: <SeoLab />, description: "Analyze and optimize your on-page SEO." },
+  { value: "insights", title: "Insight Hub", icon: LineChart, component: <InsightHub />, description: "View AI-powered analytics and insights." },
+  { value: "bot", title: "Bot Console", icon: Bot, component: <BotConsole />, description: "Interact with your AI marketing assistant." },
 ];
 
 export default function DashboardPage() {
@@ -40,14 +41,23 @@ export default function DashboardPage() {
         className="mt-10"
       >
         <Tabs defaultValue="content" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-            {toolTabs.map((tab) => (
-              <TabsTrigger key={tab.value} value={tab.value}>
-                <tab.icon className="mr-2 h-4 w-4" />
-                {tab.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <TooltipProvider>
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+              {toolTabs.map((tab) => (
+                <Tooltip key={tab.value} delayDuration={0}>
+                  <TooltipTrigger asChild>
+                    <TabsTrigger value={tab.value} className="w-full">
+                      <tab.icon className="mr-2 h-4 w-4" />
+                      {tab.title}
+                    </TabsTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{tab.description}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </TabsList>
+          </TooltipProvider>
           {toolTabs.map((tab) => (
             <TabsContent key={tab.value} value={tab.value} className="py-6">
               {tab.component}

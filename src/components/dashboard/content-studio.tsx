@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sparkles } from "lucide-react";
+import { Copy, Sparkles } from "lucide-react";
+import { toast } from "sonner";
 
 const examplePrompts = [
   "Write a blog post intro about the future of AI in marketing.",
@@ -32,6 +33,12 @@ export function ContentStudio() {
 
   const handlePromptClick = (p: string) => {
     setPrompt(p);
+  };
+
+  const handleCopy = () => {
+    if (!generatedContent) return;
+    navigator.clipboard.writeText(generatedContent);
+    toast.success("Content copied to clipboard!");
   };
 
   return (
@@ -71,9 +78,15 @@ export function ContentStudio() {
             exit={{ opacity: 0, y: -20 }}
           >
             <Card>
-              <CardHeader>
-                <CardTitle>Generated Output</CardTitle>
-                <CardDescription>Tagline: "Generated in Content AI Studio"</CardDescription>
+              <CardHeader className="flex flex-row items-start justify-between">
+                <div>
+                  <CardTitle>Generated Output</CardTitle>
+                  <CardDescription>Tagline: "Generated in Content AI Studio"</CardDescription>
+                </div>
+                <Button variant="ghost" size="icon" onClick={handleCopy}>
+                  <Copy className="h-4 w-4" />
+                  <span className="sr-only">Copy</span>
+                </Button>
               </CardHeader>
               <CardContent className="prose prose-sm dark:prose-invert whitespace-pre-wrap font-sans">
                 {generatedContent}
