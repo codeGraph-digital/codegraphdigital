@@ -88,10 +88,9 @@ export default function FeaturesPage() {
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-grow items-end">
-                <div className="flex h-24 w-full items-center justify-center rounded-md border border-dashed bg-background/50">
-                  <p className="font-mono text-sm text-muted-foreground">
-                    [Demo UI Block]
-                  </p>
+                <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-md border bg-background/50">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
+                  <p className="font-mono text-sm text-muted-foreground z-10">[Visual Representation]</p>
                 </div>
               </CardContent>
             </Card>

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { HomepageHeroAnimation } from "@/components/homepage-hero-animation";
 
 export default function Home() {
   return (
@@ -53,14 +54,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 md:mt-20"
         >
-          <div className="relative mx-auto max-w-4xl">
-            <div className="absolute -inset-2 rounded-lg bg-gradient-to-r from-primary to-purple-600 opacity-25 blur-3xl"></div>
-            <div className="relative rounded-lg bg-card/50 p-4 shadow-2xl ring-1 ring-white/10">
-              <div className="aspect-video rounded-md bg-background/50 flex items-center justify-center">
-                <p className="font-mono text-muted-foreground">[Lottie/SVG Animation Placeholder]</p>
-              </div>
-            </div>
-          </div>
+          <HomepageHeroAnimation />
         </motion.div>
       </section>
     </div>
