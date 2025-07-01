@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { FloatingAssistant } from "@/components/floating-assistant";
+import { SiteLayout } from "@/components/site-layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,11 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <SiteLayout>{children}</SiteLayout>
           <Toaster />
           <FloatingAssistant />
         </ThemeProvider>
