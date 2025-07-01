@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Code, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { href: "/features", label: "Features" },
@@ -65,6 +66,7 @@ export function Header() {
             </Sheet>
           </div>
           <nav className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <Link href="/dashboard">
               <Button variant="ghost">Log In</Button>
             </Link>
