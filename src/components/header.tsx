@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
   { href: "/features", label: "Features" },
-  { href: "/demo", label: "Demo" },
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/pricing", label: "Pricing" },
   { href: "/docs", label: "Docs" },
   { href: "/contact", label: "Contact" },
@@ -65,8 +65,12 @@ export function Header() {
             </Sheet>
           </div>
           <nav className="hidden md:flex items-center gap-2">
-            <Button variant="ghost">Log In</Button>
-            <Button>Sign Up</Button>
+            <Link href="/dashboard">
+              <Button variant="ghost">Log In</Button>
+            </Link>
+            <Link href="/dashboard">
+              <Button>Sign Up</Button>
+            </Link>
           </nav>
         </div>
       </div>

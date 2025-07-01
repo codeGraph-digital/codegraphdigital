@@ -40,7 +40,7 @@ export default function Home() {
           <Link href="/features">
             <Button size="lg">Explore Tools</Button>
           </Link>
-          <Link href="/demo">
+          <Link href="/dashboard">
             <Button size="lg" variant="outline">
               Schedule a Demo
             </Button>
