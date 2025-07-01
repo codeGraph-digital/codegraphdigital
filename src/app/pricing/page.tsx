@@ -100,6 +100,10 @@ export default function PricingPage() {
           >
             <Card className={cn("flex h-full flex-col", tier.featured && "border-primary shadow-2xl shadow-primary/20")}>
               <CardHeader>
+                <div className="relative mb-4 flex h-20 w-full items-center justify-center overflow-hidden rounded-md border bg-background/50">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
+                  <p className="font-mono text-sm text-muted-foreground z-10">[Tier Icon/Graphic]</p>
+                </div>
                 <CardTitle>{tier.name}</CardTitle>
                 <CardDescription>{tier.description}</CardDescription>
               </CardHeader>

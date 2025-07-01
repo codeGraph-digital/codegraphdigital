@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -53,13 +54,20 @@ export function FeaturesHighlight() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 * i }}
+            className="h-full"
           >
-            <Card className="h-full bg-card/50">
+            <Card className="h-full flex flex-col bg-card/50">
               <CardHeader>
                 <feature.icon className="h-8 w-8 text-primary" />
                 <CardTitle className="mt-4">{feature.title}</CardTitle>
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
+              <CardContent className="flex-grow flex items-end mt-4">
+                 <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-md border bg-background/50">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
+                  <p className="font-mono text-sm text-muted-foreground z-10">[Feature Graphic]</p>
+                </div>
+              </CardContent>
             </Card>
           </motion.div>
         ))}
