@@ -16,16 +16,16 @@ const footerNavs = [
   {
     label: "Company",
     items: [
-      { href: "#", name: "About Us" },
+      { href: "/about", name: "About Us" },
       { href: "/contact", name: "Contact" },
-      { href: "#", name: "Careers" },
+      { href: "/careers", name: "Careers" },
     ],
   },
   {
     label: "Legal",
     items: [
-      { href: "#", name: "Terms of Service" },
-      { href: "#", name: "Privacy Policy" },
+      { href: "/terms", name: "Terms of Service" },
+      { href: "/privacy", name: "Privacy Policy" },
     ],
   },
 ];
