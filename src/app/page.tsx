@@ -1,12 +1,68 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start">
-        <h1>Blank page</h1>
-      </main>
-      <MadeWithDyad />
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative text-center py-24 md:py-32 lg:py-40">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            Smarter Marketing with{" "}
+            <span className="text-primary">AI at the Core</span>
+          </h1>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl">
+            Automate. Analyze. Accelerate.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-10 flex items-center justify-center gap-x-6"
+        >
+          <Link href="/features">
+            <Button size="lg">Explore Tools</Button>
+          </Link>
+          <Link href="/demo">
+            <Button size="lg" variant="outline">
+              Schedule a Demo
+            </Button>
+          </Link>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 md:mt-20"
+        >
+          <div className="relative mx-auto max-w-4xl">
+            <div className="absolute -inset-2 rounded-lg bg-gradient-to-r from-primary to-purple-600 opacity-25 blur-3xl"></div>
+            <div className="relative rounded-lg bg-card/50 p-4 shadow-2xl ring-1 ring-white/10">
+              <div className="aspect-video rounded-md bg-background/50 flex items-center justify-center">
+                <p className="font-mono text-muted-foreground">[Lottie/SVG Animation Placeholder]</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
     </div>
   );
 }
