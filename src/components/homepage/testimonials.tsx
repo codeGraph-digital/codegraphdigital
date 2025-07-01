@@ -9,16 +9,19 @@ const testimonials = [
     quote: "CodeGraphDigital has revolutionized our content strategy. We're creating high-quality blog posts in a fraction of the time.",
     name: "Sarah Johnson",
     title: "Marketing Director, TechCorp",
+    logo: "TechCorp",
   },
   {
     quote: "The campaign automation is a game-changer. Our lead nurturing has never been more effective or easier to manage.",
     name: "Michael Chen",
     title: "Founder, Growth Gurus",
+    logo: "Growth Gurus",
   },
   {
     quote: "As an agency, the ability to manage multiple clients and projects under one roof is invaluable. The AI tools are just the icing on the cake.",
     name: "Emily Rodriguez",
     title: "CEO, Digital Wave Agency",
+    logo: "Digital Wave",
   },
 ];
 
@@ -43,19 +46,26 @@ export function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * i }}
             >
-              <Card className="h-full">
-                <CardContent className="pt-6">
+              <Card className="h-full flex flex-col">
+                <CardContent className="pt-6 flex-grow">
                   <blockquote className="italic text-muted-foreground">"{testimonial.quote}"</blockquote>
-                  <div className="mt-4 flex items-center gap-4">
-                    <Avatar>
-                      <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                </CardContent>
+                <div className="bg-muted/50 p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <Avatar>
+                        <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                      </div>
+                    </div>
+                    <div className="flex h-10 w-24 items-center justify-center rounded-md border bg-background font-mono text-xs text-muted-foreground">
+                      {testimonial.logo}
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </motion.div>
           ))}

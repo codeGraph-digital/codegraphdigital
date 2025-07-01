@@ -34,26 +34,36 @@ export function HowItWorks() {
             Get from idea to execution faster than ever with our streamlined AI workflow.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-            >
-              <Card className="h-full text-center">
-                <CardHeader>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                    <step.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="mt-4">{step.title}</CardTitle>
-                  <CardDescription>{step.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="space-y-8"
+          >
+            {steps.map((step) => (
+              <div key={step.title} className="flex items-start gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <step.icon className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-1 text-muted-foreground">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative flex h-96 items-center justify-center rounded-xl border bg-background/50 p-8"
+          >
+             <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]"></div>
+             <p className="z-10 font-mono text-muted-foreground">[Product Screenshot Placeholder]</p>
+          </motion.div>
         </div>
       </div>
     </section>
