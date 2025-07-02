@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Bot, LineChart, PenSquare, Send, Search } from "lucide-react";
+import { Bot, LineChart, PenSquare, Send, Search, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tools = [
@@ -10,6 +10,7 @@ const tools = [
   { name: "Campaigns", icon: Send, content: "// Visual campaign flow..." },
   { name: "SEO", icon: Search, content: "// On-page SEO analysis..." },
   { name: "Insights", icon: LineChart, content: "// Engagement by channel..." },
+  { name: "Personas", icon: Users, content: "// AI-generated audience persona..." },
   { name: "Assistant", icon: Bot, content: "// Your AI marketing assistant..." },
 ];
 
