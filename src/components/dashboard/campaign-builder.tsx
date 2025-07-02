@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, CheckCircle, Mail, MousePointerClick, Send, Users, Timer } from "lucide-react";
+import { ArrowDown, ArrowRight, CheckCircle, Mail, MousePointerClick, Send, Users, Timer } from "lucide-react";
 import { motion } from "framer-motion";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ const initialFlowSteps: Step[] = [
 ];
 
 const FlowNode = ({ icon: Icon, label, color, isLast = false, onClick }: { icon: React.ElementType, label: string, color: string, isLast?: boolean, onClick: () => void }) => (
-  <div className="flex items-center">
+  <div className="flex flex-col items-center md:flex-row">
     <button 
       onClick={onClick}
       className="flex w-48 items-center gap-4 rounded-lg border bg-card/50 p-4 shadow-sm transition-all hover:shadow-md hover:border-primary/50 focus:outline-none focus:ring-2 focus:ring-ring"
@@ -37,7 +37,12 @@ const FlowNode = ({ icon: Icon, label, color, isLast = false, onClick }: { icon:
       <Icon className={`h-8 w-8 ${color} shrink-0`} />
       <div className="font-medium text-left">{label}</div>
     </button>
-    {!isLast && <ArrowRight className="mx-4 h-6 w-6 text-muted-foreground shrink-0" />}
+    {!isLast && (
+      <>
+        <ArrowDown className="my-4 h-6 w-6 shrink-0 text-muted-foreground md:hidden" />
+        <ArrowRight className="mx-4 h-6 w-6 shrink-0 text-muted-foreground hidden md:flex" />
+      </>
+    )}
   </div>
 );
 
@@ -78,7 +83,7 @@ export function CampaignBuilder() {
           </p>
           <div className="overflow-x-auto pb-4">
             <motion.div 
-              className="flex items-center"
+              className="flex flex-col items-center md:inline-flex md:flex-row"
               initial="hidden"
               animate="visible"
               variants={{
