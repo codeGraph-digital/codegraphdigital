@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lightbulb, Target, Rocket } from "lucide-react";
+import { HomepageHeroAnimation } from "../homepage-hero-animation";
 
 const steps = [
   {
@@ -59,10 +59,12 @@ export function HowItWorks() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative flex h-96 items-center justify-center rounded-xl border bg-background/50 p-8"
+            className="relative flex h-[28rem] items-center justify-center overflow-hidden rounded-xl border bg-background/50"
           >
              <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]"></div>
-             <p className="z-10 font-mono text-muted-foreground">[Product Screenshot Placeholder]</p>
+             <div className="z-10 w-full scale-[0.7] lg:scale-[0.8]">
+                <HomepageHeroAnimation />
+             </div>
           </motion.div>
         </div>
       </div>
