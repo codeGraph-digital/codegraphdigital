@@ -27,6 +27,7 @@ import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function DashboardHeader() {
   const { user } = useAuth();
@@ -38,7 +39,7 @@ export function DashboardHeader() {
       toast.success("Logged out successfully.");
       router.push("/");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(getFriendlyAuthErrorMessage(error));
     }
   };
 
@@ -72,16 +73,20 @@ export function DashboardHeader() {
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">
             <Avatar>
-              <AvatarFallback>{user?.email?.[0].toUpperCase() || 'U'}</AvatarFallback>
+              <AvatarFallback>{user?.displayName?.[0].toUpperCase() || user?.email?.[0].toUpperCase() || 'U'}</AvatarFallback>
             </Avatar>
             <span className="sr-only">Toggle user menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>{user?.email || "My Account"}</DropdownMenuLabel>
+          <DropdownMenuLabel>{user?.displayName || user?.email || "My Account"}</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard/profile">Profile</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard/settings">Settings</Link>
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
         </DropdownMenuContent>
