@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bot, Code, LineChart, PenSquare, Send, Search } from "lucide-react";
+import { Bot, Code, LineChart, PenSquare, Send, Search, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +11,7 @@ const tools = [
   { href: "/dashboard/campaigns", title: "Campaign Builder", icon: Send },
   { href: "/dashboard/seo", title: "SEO Lab", icon: Search },
   { href: "/dashboard/insights", title: "Insight Hub", icon: LineChart },
+  { href: "/dashboard/personas", title: "Persona Generator", icon: Users },
   { href: "/dashboard/bot", title: "Bot Console", icon: Bot },
 ];
 

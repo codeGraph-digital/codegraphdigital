@@ -3,6 +3,7 @@
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartTooltipContent, ChartContainer } from "@/components/ui/chart";
+import { Lightbulb } from "lucide-react";
 
 const barData = [
   { channel: "Organic", engagement: 2400 },
@@ -21,13 +22,20 @@ const lineData = [
   { date: "Jun", visitors: 2390 },
 ];
 
+const AiInsight = ({ text }: { text: string }) => (
+    <div className="mt-4 flex items-start gap-2 rounded-lg border bg-muted/50 p-3 text-sm">
+        <Lightbulb className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" />
+        <p className="text-muted-foreground"><span className="font-semibold text-foreground">AI Insight:</span> {text}</p>
+    </div>
+)
+
 export function InsightHub() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <Card>
         <CardHeader>
           <CardTitle>Engagement by Channel</CardTitle>
-          <CardDescription>AI-generated insights show Email marketing is your top performer.</CardDescription>
+          <CardDescription>A breakdown of user engagement across your marketing channels.</CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer config={{}} className="h-[250px] w-full">
@@ -41,12 +49,13 @@ export function InsightHub() {
               </BarChart>
             </ResponsiveContainer>
           </ChartContainer>
+          <AiInsight text="Email marketing is your top performer by a significant margin. Consider doubling down on this channel for Q3." />
         </CardContent>
       </Card>
       <Card>
         <CardHeader>
           <CardTitle>Website Visitors (6 Months)</CardTitle>
-          <CardDescription>Predictive analytics forecast an upward trend for next quarter.</CardDescription>
+          <CardDescription>An overview of your website traffic over the last half year.</CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer config={{}} className="h-[250px] w-full">
@@ -60,6 +69,7 @@ export function InsightHub() {
               </LineChart>
             </ResponsiveContainer>
           </ChartContainer>
+          <AiInsight text="Predictive analytics forecast a 15% increase in visitors next month based on current trends. Prepare for more traffic." />
         </CardContent>
       </Card>
     </div>
