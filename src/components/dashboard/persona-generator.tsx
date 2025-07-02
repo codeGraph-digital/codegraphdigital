@@ -7,38 +7,40 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Sparkles, User, Target, ThumbsDown, Quote } from "lucide-react";
-
-const generatedPersona = {
-  name: "Marketing Maria",
-  age: 34,
-  role: "Marketing Manager @ a Mid-Size SaaS",
-  avatar: "MM",
-  quote: "I need tools that save me time and show clear ROI, not more complexity.",
-  goals: [
-    "Increase lead generation by 20% this quarter.",
-    "Improve campaign efficiency and automation.",
-    "Justify marketing spend with clear data.",
-  ],
-  frustrations: [
-    "Juggling too many single-purpose tools.",
-    "Struggling to create fresh content consistently.",
-    "Proving the value of marketing efforts to leadership.",
-  ],
-};
+import { Sparkles, Target, ThumbsDown, Quote } from "lucide-react";
+import { useDashboard } from "@/context/dashboard-context";
 
 export function PersonaGenerator() {
   const [description, setDescription] = React.useState("An all-in-one AI marketing platform for SaaS companies.");
   const [persona, setPersona] = React.useState<any>(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const { addActivity } = useDashboard();
 
   const handleGenerate = () => {
     if (!description) return;
     setIsLoading(true);
     setPersona(null);
     setTimeout(() => {
+      const generatedPersona = {
+        name: "Innovator Alex",
+        age: 32,
+        role: `Enthusiast for: "${description.substring(0, 40)}..."`,
+        avatar: "IA",
+        quote: "I need tools that are powerful yet simple, and show clear value quickly.",
+        goals: [
+          "Improve efficiency and automate repetitive tasks.",
+          "Find new, creative solutions to old problems.",
+          "Stay ahead of the curve in the industry.",
+        ],
+        frustrations: [
+          "Complex tools with steep learning curves.",
+          "Difficulty in proving the ROI of new software.",
+          "Wasting time on manual, low-impact work.",
+        ],
+      };
       setPersona(generatedPersona);
       setIsLoading(false);
+      addActivity({ type: "Persona", description: `Generated persona for product: "${description.substring(0, 25)}..."` });
     }, 2000);
   };
 
