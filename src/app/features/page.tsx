@@ -10,6 +10,10 @@ import {
 } from "@/components/ui/card";
 import { Bot, PenSquare, PieChart, Send, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { ContentWriterPreview } from "@/components/feature-previews/content-writer-preview";
+import { CampaignFlowPreview } from "@/components/feature-previews/campaign-flow-preview";
+import { SeoCheckPreview } from "@/components/feature-previews/seo-check-preview";
+import { ChatbotPreview } from "@/components/feature-previews/chatbot-preview";
 
 const features = [
   {
@@ -18,6 +22,7 @@ const features = [
     description:
       "Generate high-quality copy, blog posts, and product descriptions in seconds.",
     tag: "LLM-Powered",
+    preview: <ContentWriterPreview />,
   },
   {
     icon: Send,
@@ -25,6 +30,7 @@ const features = [
     description:
       "Automate email and ad campaigns with intelligent, data-driven workflows.",
     tag: "AI-Enhanced",
+    preview: <CampaignFlowPreview />,
   },
   {
     icon: TrendingUp,
@@ -32,6 +38,7 @@ const features = [
     description:
       "Receive real-time suggestions to improve your on-page SEO and climb rankings.",
     tag: "CodeGraph Output",
+    preview: <SeoCheckPreview />,
   },
   {
     icon: PieChart,
@@ -39,6 +46,7 @@ const features = [
     description:
       "Get AI-generated insights into your audience demographics, behavior, and preferences.",
     tag: "AI-Enhanced",
+    preview: <p className="font-mono text-sm text-muted-foreground">[Chart Preview]</p>,
   },
   {
     icon: Bot,
@@ -46,6 +54,7 @@ const features = [
     description:
       "Deploy an intelligent chatbot to handle customer queries and guide users.",
     tag: "LLM-Powered",
+    preview: <ChatbotPreview />,
   },
 ];
 
@@ -88,9 +97,11 @@ export default function FeaturesPage() {
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-grow items-end">
-                <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-md border bg-background/50">
+                <div className="relative flex w-full min-h-24 items-center justify-center overflow-hidden rounded-md border bg-background/50">
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
-                  <p className="font-mono text-sm text-muted-foreground z-10">[Visual Representation]</p>
+                  <div className="z-10 w-full">
+                    {feature.preview}
+                  </div>
                 </div>
               </CardContent>
             </Card>
