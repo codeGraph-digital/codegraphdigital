@@ -11,16 +11,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "./theme-toggle";
+import { useAuth } from "@/context/auth-context";
+import { Skeleton } from "./ui/skeleton";
 
 const navLinks = [
   { href: "/features", label: "Features" },
-  { href: "/dashboard", label: "Dashboard" },
   { href: "/pricing", label: "Pricing" },
   { href: "/docs", label: "Docs" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
+  const { user, loading } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
@@ -41,6 +44,11 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+             {user && (
+              <Link href="/dashboard" className="transition-colors hover:text-foreground/80 text-foreground/60">
+                Dashboard
+              </Link>
+            )}
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
@@ -71,18 +79,33 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
+                   {user && (
+                    <Link href="/dashboard" className="transition-colors hover:text-foreground/80 text-foreground/60">
+                      Dashboard
+                    </Link>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>
           </div>
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/auth/login">
-              <Button variant="ghost">Log In</Button>
-            </Link>
-            <Link href="/auth/signup">
-              <Button>Sign Up</Button>
-            </Link>
+            {loading ? (
+              <Skeleton className="h-10 w-20" />
+            ) : user ? (
+              <Link href="/dashboard">
+                <Button>Dashboard</Button>
+              </Link>
+            ) : (
+              <>
+                <Link href="/auth/login">
+                  <Button variant="ghost">Log In</Button>
+                </Link>
+                <Link href="/auth/signup">
+                  <Button>Sign Up</Button>
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </div>

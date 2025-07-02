@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { FloatingAssistant } from "@/components/floating-assistant";
 import { SiteLayout } from "@/components/site-layout";
+import { AuthProvider } from "@/context/auth-context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,9 +38,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SiteLayout>{children}</SiteLayout>
-          <Toaster />
-          <FloatingAssistant />
+          <AuthProvider>
+            <SiteLayout>{children}</SiteLayout>
+            <Toaster />
+            <FloatingAssistant />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
