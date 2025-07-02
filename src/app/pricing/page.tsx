@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -50,6 +51,25 @@ const comparisonFeatures = [
   { feature: "Priority Support", free: false, pro: true, agency: true },
   { feature: "Dedicated Account Manager", free: false, pro: false, agency: true },
 ];
+
+const faqs = [
+    {
+        question: "Is there a free trial available?",
+        answer: "Yes! Our Free plan is free forever and includes access to our basic AI tools for one project. It's a great way to experience the core functionalities of CodeGraphDigital before committing to a paid plan."
+    },
+    {
+        question: "Can I change my plan later?",
+        answer: "Absolutely. You can upgrade, downgrade, or cancel your plan at any time from your account settings. Changes will be prorated and applied to your next billing cycle."
+    },
+    {
+        question: "What is your refund policy?",
+        answer: "We offer a 14-day money-back guarantee on all our paid plans. If you're not satisfied with our service within the first 14 days, just contact our support team for a full refund."
+    },
+    {
+        question: "How does the 'Yearly' billing work?",
+        answer: "When you choose a yearly plan, you pay for the entire year upfront at a discounted rate (you save 15% compared to paying monthly). Your subscription will automatically renew every year unless you cancel."
+    }
+]
 
 const Checkmark = () => <Check className="h-5 w-5 text-primary" />;
 const Cross = () => <X className="h-5 w-5 text-muted-foreground" />;
@@ -150,20 +170,37 @@ export default function PricingPage() {
               {comparisonFeatures.map((item) => (
                 <TableRow key={item.feature}>
                   <TableCell className="font-medium">{item.feature}</TableCell>
-                  {[item.free, item.pro, item.agency].map((value, i) => (
-                    <TableCell key={i} className="text-center">
-                      {typeof value === 'boolean' ? (
-                        value ? <Checkmark /> : <Cross />
-                      ) : (
-                        <span>{value}</span>
-                      )}
-                    </TableCell>
-                  ))}
+                  <TableCell className="text-center">
+                    {typeof item.free === 'boolean' ? (item.free ? <Checkmark /> : <Cross />) : <span>{item.free}</span>}
+                  </TableCell>
+                  <TableCell className="text-center bg-muted/50">
+                    {typeof item.pro === 'boolean' ? (item.pro ? <Checkmark /> : <Cross />) : <span>{item.pro}</span>}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {typeof item.agency === 'boolean' ? (item.agency ? <Checkmark /> : <Cross />) : <span>{item.agency}</span>}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </Card>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="mt-20"
+      >
+        <h2 className="text-center text-3xl font-bold">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto mt-8">
+            {faqs.map((faq, i) => (
+                <AccordionItem value={`item-${i}`} key={i}>
+                    <AccordionTrigger>{faq.question}</AccordionTrigger>
+                    <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+            ))}
+        </Accordion>
       </motion.div>
     </div>
   );
