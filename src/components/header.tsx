@@ -77,10 +77,10 @@ export function Header() {
           </div>
           <nav className="hidden md:flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/dashboard">
+            <Link href="/auth/login">
               <Button variant="ghost">Log In</Button>
             </Link>
-            <Link href="/dashboard">
+            <Link href="/auth/signup">
               <Button>Sign Up</Button>
             </Link>
           </nav>
