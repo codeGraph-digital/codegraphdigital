@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { FloatingAssistant } from "@/components/floating-assistant";
 import { SiteLayout } from "@/components/site-layout";
 import { AuthProvider } from "@/context/auth-context";
+import { CookieConsent } from "@/components/cookie-consent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
             <SiteLayout>{children}</SiteLayout>
             <Toaster />
             <FloatingAssistant />
+            <CookieConsent />
           </AuthProvider>
         </ThemeProvider>
       </body>
