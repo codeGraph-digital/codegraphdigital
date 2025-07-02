@@ -91,7 +91,7 @@ export function SeoLab() {
               <CardHeader>
                 <CardTitle>Detailed Report</CardTitle>
                 <CardDescription>A check-by-check breakdown of your page's SEO health.</CardDescription>
-              </Header>
+              </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
