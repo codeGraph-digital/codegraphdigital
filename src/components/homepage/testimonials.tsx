@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { CompanyLogo } from "@/components/company-logos";
 
 const testimonials = [
   {
@@ -61,8 +62,8 @@ export function Testimonials() {
                         <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                       </div>
                     </div>
-                    <div className="flex h-10 w-24 items-center justify-center rounded-md border bg-background font-mono text-xs text-muted-foreground">
-                      {testimonial.logo}
+                    <div className="flex h-10 w-24 items-center justify-center">
+                      <CompanyLogo name={testimonial.logo} />
                     </div>
                   </div>
                 </div>
