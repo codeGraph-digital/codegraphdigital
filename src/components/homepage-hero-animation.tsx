@@ -1,8 +1,28 @@
 "use client";
 
+import * as React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Bot, LineChart, PenSquare, Send, Search } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const tools = [
+  { name: "Content", icon: PenSquare, content: "// AI-generated blog post intro..." },
+  { name: "Campaigns", icon: Send, content: "// Visual campaign flow..." },
+  { name: "SEO", icon: Search, content: "// On-page SEO analysis..." },
+  { name: "Insights", icon: LineChart, content: "// Engagement by channel..." },
+  { name: "Assistant", icon: Bot, content: "// Your AI marketing assistant..." },
+];
 
 export function HomepageHeroAnimation() {
+  const [activeToolIndex, setActiveToolIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveToolIndex((prevIndex) => (prevIndex + 1) % tools.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative mx-auto max-w-4xl">
       <div className="absolute -inset-2 rounded-lg bg-gradient-to-r from-primary to-purple-600 opacity-25 blur-3xl"></div>
@@ -16,14 +36,34 @@ export function HomepageHeroAnimation() {
             </div>
             <div className="flex flex-grow gap-2 overflow-hidden">
               <div className="hidden w-1/4 flex-col gap-2 md:flex">
-                <div className="flex h-7 items-center gap-2 rounded bg-primary/10 p-2 text-xs text-primary"><PenSquare className="h-3 w-3" /> Content</div>
-                <div className="flex h-7 items-center gap-2 rounded bg-muted p-2 text-xs"><Send className="h-3 w-3" /> Campaigns</div>
-                <div className="flex h-7 items-center gap-2 rounded bg-muted p-2 text-xs"><Search className="h-3 w-3" /> SEO</div>
-                <div className="flex h-7 items-center gap-2 rounded bg-muted p-2 text-xs"><LineChart className="h-3 w-3" /> Insights</div>
-                <div className="flex h-7 items-center gap-2 rounded bg-muted p-2 text-xs"><Bot className="h-3 w-3" /> Assistant</div>
+                {tools.map((tool, index) => (
+                  <div
+                    key={tool.name}
+                    className={cn(
+                      "flex h-7 items-center gap-2 rounded p-2 text-xs transition-colors",
+                      activeToolIndex === index
+                        ? "bg-primary/10 text-primary"
+                        : "bg-muted"
+                    )}
+                  >
+                    <tool.icon className="h-3 w-3" /> {tool.name}
+                  </div>
+                ))}
               </div>
               <div className="w-full rounded bg-muted/50 p-2 md:w-3/4">
-                <p className="text-xs text-muted-foreground">// AI-generated blog post intro...</p>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeToolIndex}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-xs text-muted-foreground">
+                      {tools[activeToolIndex].content}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
                 <div className="mt-2 h-2 w-5/6 rounded-full bg-muted animate-pulse"></div>
                 <div className="mt-2 h-2 w-full rounded-full bg-muted animate-pulse" style={{ animationDelay: '0.1s' }}></div>
                 <div className="mt-2 h-2 w-4/6 rounded-full bg-muted animate-pulse" style={{ animationDelay: '0.2s' }}></div>

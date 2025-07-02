@@ -11,27 +11,35 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ContentWriterPreview } from "../feature-previews/content-writer-preview";
+import { CampaignFlowPreview } from "../feature-previews/campaign-flow-preview";
+import { SeoCheckPreview } from "../feature-previews/seo-check-preview";
+import { ChatbotPreview } from "../feature-previews/chatbot-preview";
 
 const features = [
   {
     icon: PenSquare,
     title: "AI Content Writer",
     description: "Generate high-quality copy and articles in seconds.",
+    preview: <ContentWriterPreview />,
   },
   {
     icon: Send,
     title: "Campaign Generator",
     description: "Automate email and ad campaigns with intelligent workflows.",
+    preview: <CampaignFlowPreview />,
   },
   {
     icon: TrendingUp,
     title: "SEO Optimizer",
     description: "Receive real-time suggestions to improve your on-page SEO.",
+    preview: <SeoCheckPreview />,
   },
   {
     icon: Bot,
     title: "Chatbot Assistant",
     description: "Deploy an intelligent chatbot to handle customer queries.",
+    preview: <ChatbotPreview />,
   },
 ];
 
@@ -63,9 +71,11 @@ export function FeaturesHighlight() {
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow flex items-end mt-4">
-                 <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-md border bg-background/50">
+                 <div className="relative flex w-full min-h-24 items-center justify-center overflow-hidden rounded-md border bg-background/50">
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
-                  <p className="font-mono text-sm text-muted-foreground z-10">[Feature Graphic]</p>
+                  <div className="z-10 w-full">
+                    {feature.preview}
+                  </div>
                 </div>
               </CardContent>
             </Card>
