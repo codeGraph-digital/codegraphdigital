@@ -4,18 +4,13 @@ import { useAuth } from "@/context/auth-context";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, BarChart2, FileText, Rocket, Users } from "lucide-react";
+import { BarChart2, FileText, Rocket, Users } from "lucide-react";
+import { useDashboard } from "@/context/dashboard-context";
 
 const kpis = [
     { title: "Engagement Rate", value: "12.5%", change: "+2.1%", changeType: "increase" },
     { title: "New Leads", value: "320", change: "+15", changeType: "increase" },
     { title: "Site Visitors", value: "14.2k", change: "-3.2%", changeType: "decrease" },
-];
-
-const recentActivity = [
-    { type: "Content", description: "Generated a blog post titled 'The Future of AI'", time: "2h ago" },
-    { type: "Campaign", description: "Launched the 'Q3 Welcome Series' email campaign", time: "1d ago" },
-    { type: "SEO", description: "Completed SEO analysis for /features page", time: "3d ago" },
 ];
 
 const quickLinks = [
@@ -27,6 +22,7 @@ const quickLinks = [
 
 export function DashboardOverview() {
     const { user } = useAuth();
+    const { activities } = useDashboard();
 
     return (
         <div className="space-y-6">
@@ -59,7 +55,7 @@ export function DashboardOverview() {
                     </CardHeader>
                     <CardContent>
                         <ul className="space-y-4">
-                            {recentActivity.map((activity, i) => (
+                            {activities.slice(0, 3).map((activity, i) => (
                                 <li key={i} className="flex items-center justify-between">
                                     <div>
                                         <p className="font-medium">{activity.type}</p>

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+import { useDashboard } from "@/context/dashboard-context";
 
 const examplePrompts = [
   "Write a blog post intro about the future of AI in marketing.",
@@ -19,6 +20,7 @@ export function ContentStudio() {
   const [prompt, setPrompt] = React.useState("");
   const [generatedContent, setGeneratedContent] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const { addActivity } = useDashboard();
 
   const handleGenerate = () => {
     if (!prompt) return;
@@ -28,6 +30,7 @@ export function ContentStudio() {
       const content = `Based on your prompt, "${prompt}", here is a draft:\n\nAs we stand on the precipice of a new digital era, the fusion of Artificial Intelligence and marketing is no longer a futuristic concept but a present-day reality. AI is fundamentally reshaping how brands connect with their audiences, moving beyond simple automation to predictive analytics, hyper-personalization, and content creation that resonates on a deeper level. This paradigm shift is empowering marketers to craft strategies that are not only more efficient but also profoundly more effective. Welcome to the future of marketing—a future that is intelligent, adaptive, and driven by data.`;
       setGeneratedContent(content);
       setIsLoading(false);
+      addActivity({ type: "Content", description: `Generated content for prompt: "${prompt.substring(0, 30)}..."` });
     }, 2000);
   };
 

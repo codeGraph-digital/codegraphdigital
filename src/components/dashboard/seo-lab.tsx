@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { CheckCircle2, AlertTriangle, Info, Lightbulb } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useDashboard } from "@/context/dashboard-context";
 
 const analysisResults = [
   { check: "Title Tag", status: "pass", recommendation: "Length is optimal (58 characters). Well done." },
@@ -29,6 +29,7 @@ export function SeoLab() {
   const [url, setUrl] = React.useState("https://codegraphdigital.com/features");
   const [results, setResults] = React.useState<any[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const { addActivity } = useDashboard();
 
   const handleAnalyze = () => {
     if (!url) return;
@@ -37,6 +38,7 @@ export function SeoLab() {
     setTimeout(() => {
       setResults(analysisResults);
       setIsLoading(false);
+      addActivity({ type: "SEO", description: `Completed SEO analysis for ${url}` });
     }, 1500);
   };
 
@@ -89,7 +91,7 @@ export function SeoLab() {
               <CardHeader>
                 <CardTitle>Detailed Report</CardTitle>
                 <CardDescription>A check-by-check breakdown of your page's SEO health.</CardDescription>
-              </CardHeader>
+              </Header>
               <CardContent>
                 <Table>
                   <TableHeader>
