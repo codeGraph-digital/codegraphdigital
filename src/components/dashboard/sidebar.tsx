@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bot, Code, LineChart, PenSquare, Send, Search, Users, User, Settings } from "lucide-react";
+import { Bot, Code, Home, LineChart, PenSquare, Send, Search, Users, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
 const mainNav = [
+  { href: "/dashboard", title: "Overview", icon: Home, exact: true },
   { href: "/dashboard/content", title: "Content Studio", icon: PenSquare },
   { href: "/dashboard/campaigns", title: "Campaign Builder", icon: Send },
   { href: "/dashboard/seo", title: "SEO Lab", icon: Search },
@@ -24,6 +25,13 @@ const settingsNav = [
 export function Sidebar() {
   const pathname = usePathname();
 
+  const isLinkActive = (href: string, exact = false) => {
+    if (exact) {
+      return pathname === href;
+    }
+    return pathname.startsWith(href);
+  };
+
   return (
     <div className={cn("h-full max-h-screen flex-col gap-2 bg-muted/40 lg:flex")}>
       <div className="flex h-14 items-center border-b px-6">
@@ -37,7 +45,7 @@ export function Sidebar() {
         {mainNav.map((tool) => (
           <Link key={tool.href} href={tool.href}>
             <Button
-              variant={pathname.startsWith(tool.href) ? "secondary" : "ghost"}
+              variant={isLinkActive(tool.href, tool.exact) ? "secondary" : "ghost"}
               className="w-full justify-start"
             >
               <tool.icon className="mr-2 h-4 w-4" />
@@ -50,7 +58,7 @@ export function Sidebar() {
         {settingsNav.map((item) => (
             <Link key={item.href} href={item.href}>
                 <Button
-                variant={pathname.startsWith(item.href) ? "secondary" : "ghost"}
+                variant={isLinkActive(item.href) ? "secondary" : "ghost"}
                 className="w-full justify-start"
                 >
                 <item.icon className="mr-2 h-4 w-4" />

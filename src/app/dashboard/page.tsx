@@ -1,6 +1,7 @@
 "use client";
-import { redirect } from 'next/navigation';
+
+import { DashboardOverview } from "@/components/dashboard/dashboard-overview";
 
 export default function DashboardRootPage() {
-  redirect('/dashboard/content');
+  return <DashboardOverview />;
 }
