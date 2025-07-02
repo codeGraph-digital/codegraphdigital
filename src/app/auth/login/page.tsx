@@ -27,6 +27,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getFriendlyAuthErrorMessage } from "@/lib/auth-errors";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -60,7 +61,7 @@ export default function LoginPage() {
       toast.success("Logged in successfully!");
       router.push("/dashboard");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(getFriendlyAuthErrorMessage(error));
     } finally {
       setIsLoading(false);
     }
@@ -73,7 +74,7 @@ export default function LoginPage() {
       toast.success("Logged in successfully with Google!");
       router.push("/dashboard");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(getFriendlyAuthErrorMessage(error));
     } finally {
       setIsLoading(false);
     }

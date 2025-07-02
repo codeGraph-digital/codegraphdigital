@@ -27,6 +27,7 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getFriendlyAuthErrorMessage } from "@/lib/auth-errors";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -39,7 +40,10 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
-  password: z.string().min(8, { message: "Password must be at least 8 characters." }),
+  password: z.string().min(8, { message: "Password must be at least 8 characters." })
+    .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter." })
+    .regex(/[a-z]/, { message: "Password must contain at least one lowercase letter." })
+    .regex(/[0-9]/, { message: "Password must contain at least one number." }),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords do not match.",
@@ -65,7 +69,7 @@ export default function SignupPage() {
       toast.success("Account created successfully!");
       router.push("/dashboard");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(getFriendlyAuthErrorMessage(error));
     } finally {
       setIsLoading(false);
     }
@@ -78,7 +82,7 @@ export default function SignupPage() {
       toast.success("Account created successfully with Google!");
       router.push("/dashboard");
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(getFriendlyAuthErrorMessage(error));
     } finally {
       setIsLoading(false);
     }
