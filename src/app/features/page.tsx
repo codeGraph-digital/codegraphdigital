@@ -14,6 +14,7 @@ import { ContentWriterPreview } from "@/components/feature-previews/content-writ
 import { CampaignFlowPreview } from "@/components/feature-previews/campaign-flow-preview";
 import { SeoCheckPreview } from "@/components/feature-previews/seo-check-preview";
 import { ChatbotPreview } from "@/components/feature-previews/chatbot-preview";
+import { AudienceAnalyzerPreview } from "@/components/feature-previews/audience-analyzer-preview";
 
 const features = [
   {
@@ -46,7 +47,7 @@ const features = [
     description:
       "Get AI-generated insights into your audience demographics, behavior, and preferences.",
     tag: "AI-Enhanced",
-    preview: <p className="font-mono text-sm text-muted-foreground">[Chart Preview]</p>,
+    preview: <AudienceAnalyzerPreview />,
   },
   {
     icon: Bot,
@@ -99,7 +100,7 @@ export default function FeaturesPage() {
               <CardContent className="flex flex-grow items-end">
                 <div className="relative flex w-full min-h-24 items-center justify-center overflow-hidden rounded-md border bg-background/50">
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
-                  <div className="z-10 w-full">
+                  <div className="z-10 w-full h-full">
                     {feature.preview}
                   </div>
                 </div>
