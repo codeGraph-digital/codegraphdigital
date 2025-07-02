@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = posts.find((p) => p.slug === params.slug);
 
