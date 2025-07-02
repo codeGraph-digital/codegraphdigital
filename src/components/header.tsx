@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Code, Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
@@ -47,11 +53,15 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left">
-                <Link href="/" className="flex items-center space-x-2 mb-6">
-                  <Code className="h-6 w-6 text-primary" />
-                  <span className="font-bold">CodeGraphDigital</span>
-                </Link>
-                <nav className="flex flex-col gap-4">
+                <SheetHeader>
+                  <SheetTitle>
+                    <Link href="/" className="flex items-center space-x-2">
+                      <Code className="h-6 w-6 text-primary" />
+                      <span className="font-bold">CodeGraphDigital</span>
+                    </Link>
+                  </SheetTitle>
+                </SheetHeader>
+                <nav className="mt-6 flex flex-col gap-4">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}

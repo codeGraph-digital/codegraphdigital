@@ -1,5 +1,10 @@
 import { Sidebar } from "@/components/dashboard/sidebar";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Code, Menu } from "lucide-react";
 import Link from "next/link";
@@ -24,13 +29,14 @@ export default function DashboardLayout({
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col p-0">
+              <SheetTitle className="sr-only">Dashboard Menu</SheetTitle>
               <Sidebar />
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-                <Code className="h-6 w-6 text-primary" />
-                <span>CodeGraphDigital</span>
+              <Code className="h-6 w-6 text-primary" />
+              <span>CodeGraphDigital</span>
             </Link>
           </div>
         </header>
