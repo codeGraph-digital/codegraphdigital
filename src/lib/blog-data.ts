@@ -6,16 +6,19 @@ export interface Post {
   date: string;
   excerpt: string;
   content: string;
+  id: string; // Unique identifier for the post
 }
 
 export const posts: Post[] = [
   {
+    id: "1",
     slug: "the-future-of-ai-in-marketing",
     title: "The Future of AI in Marketing: Predictions for 2025",
     author: "Alex Johnson",
     authorRole: "Founder & CEO",
     date: "October 26, 2023",
-    excerpt: "Artificial Intelligence is no longer a futuristic concept but a present-day reality reshaping the marketing landscape. Here are our predictions for the coming year.",
+    excerpt:
+      "Artificial Intelligence is no longer a futuristic concept but a present-day reality reshaping the marketing landscape. Here are our predictions for the coming year.",
     content: `
 <p>Artificial Intelligence is no longer a futuristic concept but a present-day reality reshaping the marketing landscape. As we look towards 2025, the integration of AI is set to become even more profound, moving beyond simple automation to become the strategic core of successful marketing operations.</p>
 <h3 class="text-xl font-bold mt-6 mb-2">Hyper-Personalization at Scale</h3>
@@ -26,12 +29,15 @@ export const posts: Post[] = [
     `,
   },
   {
+    id: "2",
     slug: "mastering-seo-with-codegraph",
-    title: "Mastering SEO: How CodeGraphDigital's AI Gives You an Unfair Advantage",
+    title:
+      "Mastering SEO: How CodeGraphDigital's AI Gives You an Unfair Advantage",
     author: "Samantha Lee",
     authorRole: "Chief Technology Officer",
     date: "October 15, 2023",
-    excerpt: "Search Engine Optimization can feel like a dark art. Discover how our AI-powered SEO Lab demystifies the process and provides clear, actionable insights.",
+    excerpt:
+      "Search Engine Optimization can feel like a dark art. Discover how our AI-powered SEO Lab demystifies the process and provides clear, actionable insights.",
     content: `
 <p>Search Engine Optimization (SEO) is a critical component of digital marketing, yet it often feels like a complex and ever-changing puzzle. At CodeGraphDigital, we've leveraged the power of our CodeGraph engine to build an SEO Lab that demystifies this process.</p>
 <h3 class="text-xl font-bold mt-6 mb-2">Beyond Keywords</h3>
@@ -41,12 +47,14 @@ export const posts: Post[] = [
     `,
   },
   {
+    id: "3",
     slug: "5-campaigns-you-can-automate-today",
     title: "5 High-Impact Marketing Campaigns You Can Automate Today",
     author: "Michael Brown",
     authorRole: "Head of Product",
     date: "September 28, 2023",
-    excerpt: "Automation is key to scaling your marketing efforts. Here are five powerful campaigns you can set up in our Campaign Builder to drive growth on autopilot.",
+    excerpt:
+      "Automation is key to scaling your marketing efforts. Here are five powerful campaigns you can set up in our Campaign Builder to drive growth on autopilot.",
     content: `
 <p>Marketing automation is more than just a time-saver; it's a growth engine. By setting up intelligent, automated campaigns, you can nurture leads, engage customers, and drive revenue around the clock. Here are five campaigns you can build today with CodeGraphDigital.</p>
 <ol class="list-decimal list-inside space-y-2 mt-4">

@@ -54,23 +54,23 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container py-12 sm:py-16 lg:py-20">
+    <div className='container py-12 sm:py-16 lg:py-20 mx-auto'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-2xl text-center"
+        className='mx-auto max-w-2xl text-center'
       >
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className='text-4xl font-bold tracking-tight sm:text-5xl'>
           Get in Touch
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Have a question, a project idea, or just want to talk about the
-          future of AI? We'd love to hear from you.
+        <p className='mt-4 text-lg text-muted-foreground'>
+          Have a question, a project idea, or just want to talk about the future
+          of AI? We'd love to hear from you.
         </p>
       </motion.div>
 
-      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2">
+      <div className='mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2'>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -87,16 +87,16 @@ export default function ContactPage() {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
+                  className='space-y-6'
                 >
                   <FormField
                     control={form.control}
-                    name="name"
+                    name='name'
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Name" {...field} />
+                          <Input placeholder='Your Name' {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -104,13 +104,13 @@ export default function ContactPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="email"
+                    name='email'
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="your.email@example.com"
+                            placeholder='your.email@example.com'
                             {...field}
                           />
                         </FormControl>
@@ -120,14 +120,14 @@ export default function ContactPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="message"
+                    name='message'
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell us how we can help..."
-                            className="min-h-[120px]"
+                            placeholder='Tell us how we can help...'
+                            className='min-h-[120px]'
                             {...field}
                           />
                         </FormControl>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full">
+                  <Button type='submit' className='w-full'>
                     Send Message
                   </Button>
                 </form>
@@ -147,26 +147,32 @@ export default function ContactPage() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="space-y-8"
+          className='space-y-8'
         >
-          <div className="relative flex h-80 items-center justify-center rounded-xl border bg-muted/50 p-8">
-            <p className="font-mono text-muted-foreground">[Abstract Graphic/Map Placeholder]</p>
+          <div className='relative flex h-80 items-center justify-center rounded-xl border bg-muted/50 p-8'>
+            <p className='font-mono text-muted-foreground'>
+              [Abstract Graphic/Map Placeholder]
+            </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-              <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"><Mail /></div>
-                  <div>
-                      <h3 className="font-semibold">Email</h3>
-                      <p className="text-muted-foreground">hello@codegraph.com</p>
-                  </div>
+          <div className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
+            <div className='flex items-start gap-4'>
+              <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary'>
+                <Mail />
               </div>
-              <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"><Phone /></div>
-                  <div>
-                      <h3 className="font-semibold">Phone</h3>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                  </div>
+              <div>
+                <h3 className='font-semibold'>Email</h3>
+                <p className='text-muted-foreground'>hello@codegraph.com</p>
               </div>
+            </div>
+            <div className='flex items-start gap-4'>
+              <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary'>
+                <Phone />
+              </div>
+              <div>
+                <h3 className='font-semibold'>Phone</h3>
+                <p className='text-muted-foreground'>+1 (555) 123-4567</p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

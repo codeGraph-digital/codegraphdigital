@@ -34,13 +34,13 @@ export function HowItWorks() {
             Get from idea to execution faster than ever with our streamlined AI workflow.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 px-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-8"
+            className="space-y-8 "
           >
             {steps.map((step) => (
               <div key={step.title} className="flex items-start gap-4">

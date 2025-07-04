@@ -44,56 +44,59 @@ const seoApiExample = `async function analyzeUrlSeo() {
 }`;
 
 const sections = [
-    { id: "getting-started", title: "Getting Started" },
-    { id: "content-generation", title: "Content Generation API" },
-    { id: "campaign-automation", title: "Campaign Automation API" },
-    { id: "seo-analysis", title: "SEO Analysis API" },
-]
+  { id: "getting-started", title: "Getting Started" },
+  { id: "content-generation", title: "Content Generation API" },
+  { id: "campaign-automation", title: "Campaign Automation API" },
+  { id: "seo-analysis", title: "SEO Analysis API" },
+];
 
 export default function DocsPage() {
   return (
-    <div className="container py-12 sm:py-16 lg:py-20">
+    <div className='container py-12 sm:py-16 lg:py-20 mx-auto'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-4xl"
+        className='mx-auto max-w-4xl'
       >
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <div className='text-center'>
+          <h1 className='text-4xl font-bold tracking-tight sm:text-5xl'>
             Documentation
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className='mt-4 text-lg text-muted-foreground'>
             Integrate our AI tools into your workflow with our comprehensive
             guides and API references.
           </p>
         </div>
 
-        <div className="mt-12 space-y-16">
-          <Card className="bg-muted/50">
+        <div className='mt-12 space-y-16'>
+          <Card className='bg-muted/50'>
             <CardHeader>
-                <CardTitle>On this page</CardTitle>
+              <CardTitle>On this page</CardTitle>
             </CardHeader>
             <CardContent>
-                <ul className="space-y-2">
-                    {sections.map(section => (
-                        <li key={section.id}>
-                            <Link href={`#${section.id}`} className="text-primary hover:underline">
-                                {section.title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+              <ul className='space-y-2'>
+                {sections.map((section) => (
+                  <li key={section.id}>
+                    <Link
+                      href={`#${section.id}`}
+                      className='text-primary hover:underline'
+                    >
+                      {section.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
 
-          <section id="getting-started">
-            <h2 className="text-2xl font-bold">Getting Started</h2>
-            <p className="mt-2 text-muted-foreground">
+          <section id='getting-started'>
+            <h2 className='text-2xl font-bold'>Getting Started</h2>
+            <p className='mt-2 text-muted-foreground'>
               Begin by installing our client library and authenticating your
               requests.
             </p>
-            <Card className="mt-4">
+            <Card className='mt-4'>
               <CardHeader>
                 <CardTitle>API Key</CardTitle>
               </CardHeader>
@@ -103,64 +106,66 @@ export default function DocsPage() {
                   your dashboard settings. Keep it secret, keep it safe!
                 </p>
                 <CodeBlock
-                  language="bash"
+                  language='bash'
                   code={`export CODEGRAPHDIGITAL_API_KEY="your_api_key_here"`}
                 />
               </CardContent>
             </Card>
           </section>
 
-          <section id="content-generation">
-            <h2 className="text-2xl font-bold">Content Generation API</h2>
-            <p className="mt-2 text-muted-foreground">
+          <section id='content-generation'>
+            <h2 className='text-2xl font-bold'>Content Generation API</h2>
+            <p className='mt-2 text-muted-foreground'>
               Generate articles, ad copy, and more with a simple API call.
             </p>
-            <Card className="mt-4">
+            <Card className='mt-4'>
               <CardHeader>
                 <CardTitle>Example Request</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>
-                  Here's an example of how to generate content using our
-                  Node.js client:
+                  Here's an example of how to generate content using our Node.js
+                  client:
                 </p>
-                <CodeBlock language="javascript" code={contentApiExample} />
+                <CodeBlock language='javascript' code={contentApiExample} />
               </CardContent>
             </Card>
           </section>
 
-          <section id="campaign-automation">
-            <h2 className="text-2xl font-bold">Campaign Automation API</h2>
-            <p className="mt-2 text-muted-foreground">
+          <section id='campaign-automation'>
+            <h2 className='text-2xl font-bold'>Campaign Automation API</h2>
+            <p className='mt-2 text-muted-foreground'>
               Programmatically create and manage automated marketing campaigns.
             </p>
-            <Card className="mt-4">
+            <Card className='mt-4'>
               <CardHeader>
                 <CardTitle>Example: Create a Welcome Flow</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>
-                  Define triggers and steps to build powerful, automated workflows for your users.
+                  Define triggers and steps to build powerful, automated
+                  workflows for your users.
                 </p>
-                <CodeBlock language="javascript" code={campaignApiExample} />
+                <CodeBlock language='javascript' code={campaignApiExample} />
               </CardContent>
             </Card>
           </section>
 
-          <section id="seo-analysis">
-            <h2 className="text-2xl font-bold">SEO Analysis API</h2>
-            <p className="mt-2 text-muted-foreground">
+          <section id='seo-analysis'>
+            <h2 className='text-2xl font-bold'>SEO Analysis API</h2>
+            <p className='mt-2 text-muted-foreground'>
               Get on-demand SEO analysis and recommendations for any URL.
             </p>
-            <Card className="mt-4">
+            <Card className='mt-4'>
               <CardHeader>
                 <CardTitle>Example: Analyze a Blog Post</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>
-                  Submit a URL to our CodeGraph Output engine for a comprehensive SEO report.
+                  Submit a URL to our CodeGraph Output engine for a
+                  comprehensive SEO report.
                 </p>
-                <CodeBlock language="javascript" code={seoApiExample} />
+                <CodeBlock language='javascript' code={seoApiExample} />
               </CardContent>
             </Card>
           </section>

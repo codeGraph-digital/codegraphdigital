@@ -14,7 +14,7 @@ const LegalSection = ({ title, children }: { title: string, children: React.Reac
 
 export default function PrivacyPage() {
   return (
-    <div className="container py-12 sm:py-16 lg:py-20">
+    <div className="container py-12 sm:py-16 lg:py-20 mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -31,35 +31,35 @@ const footerNavs = [
 ];
 
 const socialLinks = [
-  { icon: <Twitter className="h-5 w-5" />, href: "#" },
-  { icon: <Github className="h-5 w-5" />, href: "#" },
-  { icon: <Linkedin className="h-5 w-5" />, href: "#" },
+  { icon: <Twitter className='h-5 w-5' />, href: "#" },
+  { icon: <Github className='h-5 w-5' />, href: "#" },
+  { icon: <Linkedin className='h-5 w-5' />, href: "#" },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/50">
-      <div className="container py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <Code className="h-6 w-6 text-primary" />
-              <span className="font-bold">CodeGraphDigital</span>
+    <footer className='border-t border-border/40 bg-muted/50'>
+      <div className='container py-12 mx-auto'>
+        <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-4'>
+          <div className='space-y-4'>
+            <Link href='/' className='flex items-center space-x-2'>
+              <Code className='h-6 w-6 text-primary' />
+              <span className='font-bold'>CodeGraphDigital</span>
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className='text-sm text-muted-foreground'>
               Smarter Marketing with AI at the Core.
             </p>
           </div>
 
           {footerNavs.map((nav) => (
             <div key={nav.label}>
-              <h4 className="font-semibold text-foreground">{nav.label}</h4>
-              <ul className="mt-4 space-y-2">
+              <h4 className='font-semibold text-foreground'>{nav.label}</h4>
+              <ul className='mt-4 space-y-2'>
                 {nav.items.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className='text-sm text-muted-foreground transition-colors hover:text-primary'
                     >
                       {item.name}
                     </Link>
@@ -70,16 +70,21 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between border-t border-border/40 pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} CodeGraphDigital. All Rights Reserved.
+        <div className='mt-10 flex flex-col items-center justify-between border-t border-border/40 pt-8 sm:flex-row'>
+          <p className='text-sm text-muted-foreground'>
+            © {new Date().getFullYear()}{" "}
+            <Link href='/' className='hover:text-primary transition-colors '>
+              CodeGraphDigital
+            </Link>
+            {". "}
+            All Rights Reserved.
           </p>
-          <div className="mt-4 flex items-center space-x-4 sm:mt-0">
+          <div className='mt-4 flex items-center space-x-4 sm:mt-0'>
             {socialLinks.map((social, idx) => (
               <Link
                 key={idx}
                 href={social.href}
-                className="text-muted-foreground transition-colors hover:text-primary"
+                className='text-muted-foreground transition-colors hover:text-primary'
               >
                 {social.icon}
               </Link>
