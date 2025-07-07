@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/blog-data";
 import { BlogPostClient } from "@/components/blog-post-client";
+import styles from "./blog.module.css";
 
 export default async function BlogPostPage({
   params,
@@ -18,7 +19,11 @@ export default async function BlogPostPage({
     .filter((p) => p.slug !== resolvedParams.slug)
     .slice(0, 2);
 
-  return <BlogPostClient post={post} relatedPosts={relatedPosts} />;
+  return (
+    <div className={styles.warapper}>
+      <BlogPostClient post={post} relatedPosts={relatedPosts} />
+    </div>
+  );
 }
 
 export async function generateStaticParams() {

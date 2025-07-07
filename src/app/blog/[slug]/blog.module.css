@@ -1,0 +1,15 @@
+.warapper a:hover {
+    color: hsl(var(--primary))
+}
+
+.warapper a:focus {
+    color: hsl(var(--primary))
+}
+
+.warapper a {
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
