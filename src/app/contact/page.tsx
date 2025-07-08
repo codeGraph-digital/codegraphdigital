@@ -24,6 +24,7 @@ import {
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
+import Link from "next/link";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -45,12 +46,46 @@ export default function ContactPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // console.log(process.env.NEXT_PUBLIC_WEB_3_FORMS_API_KEY);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        company: values.company,
+        message: values.message,
+        access_key: process.env.NEXT_PUBLIC_WEB_3_FORMS_API_KEY,
+        subject: "Contact Form Submission",
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      toast.error("Failed to send message", {
+        description: errorData.message || "An unexpected error occurred.",
+      });
+      console.error("Error submitting form:", errorData);
+      console.log("Form values:", process.env.NEXT_WEB_3_FORMS_API_KEY);
+      return;
+    }
+
+    // If successful, reset the form and show success message
+    form.reset();
+    // Log the values to console for debugging
+    // You can remove this in production
+    console.log("Form submitted successfully:", values);
+    // Optionally, you can log the response from the API
+    const responseData = await response.json();
+    console.log("Response from Web3Forms:", responseData);
+
+    // Show success toast
     toast.success("Message sent!", {
       description: "Thanks for reaching out. We'll get back to you shortly.",
     });
-    form.reset();
   }
 
   return (
@@ -149,10 +184,14 @@ export default function ContactPage() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className='space-y-8'
         >
-          <div className='relative flex h-80 items-center justify-center rounded-xl border bg-muted/50 p-8'>
-            <p className='font-mono text-muted-foreground'>
-              [Abstract Graphic/Map Placeholder]
-            </p>
+          <div className='relative flex h-80 items-center justify-center rounded-xl border bg-muted/50 overflow-hidden'>
+            {/* <p className='font-mono text-muted-foreground'> */}
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.6241306871807!2d-122.42492342369567!3d37.77541061212266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809f2520704b%3A0xa57a409db1a58a99!2s150%20Oak%20St%2C%20San%20Francisco%2C%20CA%2094102%2C%20USA!5e0!3m2!1sen!2slk!4v1751883823125!5m2!1sen!2slk'
+              loading='lazy'
+              className='w-full h-full'
+            ></iframe>
+            {/* </p> */}
           </div>
           <div className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
             <div className='flex items-start gap-4'>
@@ -161,7 +200,11 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className='font-semibold'>Email</h3>
-                <p className='text-muted-foreground'>hello@codegraph.com</p>
+                <Link href='mailto:hello@codegraphdigital.com'>
+                  <p className='text-muted-foreground'>
+                    hello@codegraphdigital.com
+                  </p>
+                </Link>
               </div>
             </div>
             <div className='flex items-start gap-4'>
@@ -170,7 +213,9 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className='font-semibold'>Phone</h3>
-                <p className='text-muted-foreground'>+1 (555) 123-4567</p>
+                <Link href='tel:+14095469721'>
+                  <p className='text-muted-foreground'>+1 (409) 546-9721</p>
+                </Link>
               </div>
             </div>
           </div>

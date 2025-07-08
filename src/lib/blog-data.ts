@@ -7,11 +7,15 @@ export interface Post {
   excerpt: string;
   content: string;
   id: string; // Unique identifier for the post
+  image?: string; // Optional image URL for the post
+  authorAvatar?: string; // Optional avatar URL for the author
 }
 
 export const posts: Post[] = [
   {
     id: "1",
+    image: "/blog_1.webp",
+    authorAvatar:"/author_1.webp",
     slug: "the-future-of-ai-in-marketing",
     title: "Transforming Digital Marketing with AI-Integrated Platforms",
     author: "Alex Johnson",
@@ -42,6 +46,8 @@ export const posts: Post[] = [
   },
   {
     id: "2",
+    image: "/blog_2.webp",
+    authorAvatar: "/author_3.webp",
     slug: "digital-marketing-customer-engagement",
     title:
       "How AI-Integrated Digital Marketing Platforms Enhance Customer Engagement",
@@ -72,6 +78,8 @@ export const posts: Post[] = [
   },
   {
     id: "3",
+    image: "/blog_3.webp",
+    authorAvatar: "/author_2.webp",
     slug: "business-growth-with-ai-marketing",
     title:
       "Driving Business Growth with AI-Integrated Digital Marketing Platforms",

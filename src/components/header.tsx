@@ -13,6 +13,9 @@ import {
 import { ThemeToggle } from "./theme-toggle";
 import { useAuth } from "@/context/auth-context";
 import { Skeleton } from "./ui/skeleton";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -25,16 +28,34 @@ const navLinks = [
 
 export function Header() {
   const { user, loading } = useAuth();
+  const theme = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <header className='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-      <div className='container flex h-14 max-w-screen-2xl items-center mx-auto'>
+      <div className='container flex h-14 max-w-screen-2xl items-center mx-auto py-2'>
         <div className='mr-4 hidden md:flex'>
           <Link href='/' className='mr-6 flex items-center space-x-2'>
-            <Code className='h-6 w-6 text-primary' />
-            <span className='hidden font-bold sm:inline-block'>
-              CodeGraphDigital
-            </span>
+            {isMounted ? (
+              <Image
+                src={
+                  theme.theme === "light"
+                    ? "/logo-light-background.webp"
+                    : "/logo-dark-background.webp"
+                }
+                alt='CodeGraphDigital Logo'
+                width={200}
+                height={50}
+              />
+            ) : (
+              <>
+                <Code className='h-6 w-6 text-primary' />
+                <span className='font-bold'>CodeGraphDigital</span>
+              </>
+            )}
           </Link>
           <nav className='flex items-center gap-6 text-sm'>
             {navLinks.map((link) => (

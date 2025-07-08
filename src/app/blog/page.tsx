@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { posts } from "@/lib/blog-data";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -43,8 +44,14 @@ export default function BlogPage() {
         >
           <Link href={`/blog/${featuredPost.slug}`}>
             <Card className='grid overflow-hidden transition-shadow hover:shadow-lg md:grid-cols-2 min-h-96'>
-              <div className='flex items-center justify-center bg-muted/50 p-8'>
-                <PenSquare className='h-24 w-24 text-muted-foreground/50' />
+              <div className='flex items-center justify-center bg-muted/50 overflow-hidden'>
+                <Image
+                  src={featuredPost.image ?? "/blog_1.webp"}
+                  alt={featuredPost.title}
+                  width={400}
+                  height={300}
+                  className='object-cover rounded-lg w-full h-full'
+                />
               </div>
               <div className='flex flex-col'>
                 <CardHeader>
