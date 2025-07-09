@@ -145,7 +145,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className='mt-10 flex flex-col items-center justify-between border-t border-border/40 pt-8 sm:flex-row'>
+        <div className='mt-10 flex flex-col items-center justify-between border-t border-border/40 pt-8 sm:flex-row w-2/3'>
           <p className='text-sm text-muted-foreground'>
             © {new Date().getFullYear()}{" "}
             <Link href='/' className='hover:text-primary transition-colors '>
@@ -159,6 +159,8 @@ export function Footer() {
               <Link
                 key={idx}
                 href={social.href}
+                target='_blank'
+                rel='noopener noreferrer'
                 className='text-muted-foreground transition-colors hover:text-primary'
               >
                 {social.icon}

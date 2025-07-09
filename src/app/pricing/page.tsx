@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/accordion";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const tiers = [
   {
@@ -118,6 +119,7 @@ const Cross = () => <X className='h-5 w-5 text-muted-foreground' />;
 
 export default function PricingPage() {
   const [isYearly, setIsYearly] = React.useState(false);
+  const route = useRouter();
 
   return (
     <div className='container py-12 sm:py-16 lg:py-20 mx-auto'>
@@ -191,6 +193,13 @@ export default function PricingPage() {
                 <Button
                   className='mt-auto w-full'
                   variant={tier.featured ? "default" : "outline"}
+                  onClick={() => {
+                    if (tier.name === "Free") {
+                      route.push("/auth/signup");
+                    } else {
+                      route.push(`/contact?plan=${tier.id}`);
+                    }
+                  }}
                 >
                   {tier.cta}
                 </Button>
@@ -300,7 +309,7 @@ export default function PricingPage() {
           className='w-full max-w-4xl mx-auto mt-8'
         >
           {faqs.map((faq, i) => (
-            <AccordionItem value={`item-${i}`} key={i} className="py-3">
+            <AccordionItem value={`item-${i}`} key={i} className='py-3'>
               <AccordionTrigger>{faq.question}</AccordionTrigger>
               <AccordionContent>{faq.answer}</AccordionContent>
             </AccordionItem>

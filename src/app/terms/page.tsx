@@ -108,6 +108,23 @@ export default function TermsPage() {
                 effective, you agree to be bound by the revised terms.
               </p>
             </LegalSection>
+            <div className='mt-8 border-t pt-6'>
+              <h2 className='text-lg font-semibold mb-2'>Contact Us</h2>
+              <p>
+                If you have any questions about these Terms, please{" "}
+                <a href='/contact' className='text-primary underline'>
+                  contact us
+                </a>{" "}
+                or email us at{" "}
+                <a
+                  href='mailto:hello@codegraphdigital.com'
+                  className='text-primary underline'
+                >
+                  hello@codegraphdigital.com
+                </a>
+                .
+              </p>
+            </div>
           </CardContent>
         </Card>
       </motion.div>
